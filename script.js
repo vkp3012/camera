@@ -4,7 +4,9 @@ let recordBtn = document.querySelector(".record-btn");
 let captureBtncont = document.querySelector(".capture-btn-cont");
 let captureBtn = document.querySelector(".capture-btn");
 
-let recoder;
+// var shortid = new ShortUniqueId();
+
+let recorder;
 let chunks = []; //media data in chunks
 let transparentColor = "transparent";
 
@@ -19,17 +21,17 @@ navigator.mediaDevices.getUserMedia(constraints)
 .then((stream)=>{
     video.srcObject = stream;
 
-    recoder = new MediaRecorder(stream);
+    recorder = new MediaRecorder(stream);
 
-    recoder.addEventListener("start",(e)=>{
+    recorder.addEventListener("start",(e)=>{
         chunks = [];
     })
 
-    recoder.addEventListener("dataavailable",(e)=>{
+    recorder.addEventListener("dataavailable",(e)=>{
         chunks.push(e.data)
     })
 
-    recoder.addEventListener("stop",(e)=>{
+    recorder.addEventListener("stop",(e)=>{
         //conversion of media chunks data to video
         let blob = new Blob(chunks,{type:"video/mp4"});
 
@@ -104,17 +106,17 @@ allFilter.forEach((filterElem) =>{
 
 
 recordBtncont.addEventListener("click",(e)=>{
-    if(!recoder) return;
+    if(!recorder) return;
 
     recordFlag = !recordFlag;
 
     if(recordFlag){
         recordBtn.classList.add("scale-record");
-        recoder.start();
+        recorder.start();
         startTimer();
     }else{
         recordBtn.classList.remove("scale-record");
-        recoder.stop();
+        recorder.stop();
         stopTimer();
     }
 })

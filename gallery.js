@@ -19,8 +19,10 @@ setTimeout(()=>{
                 <div class="media">
                     <video autoplay loop src="${url}"></video>
                 </div>
-                <div class="delete action-btn">DELETE</div>
-                <div class="download action-btn">DOWNLOAD</div>
+                <div class="delete action-btn">DELETE  <span class="material-icons">
+                delete</span></div>
+                <div class="download action-btn">DOWNLOAD  <span class="material-icons">
+                file_download</span></div>
                 `;
                 let deleteBtn = mediaElem.querySelector(".delete")
                 deleteBtn.addEventListener("click",deleteListener);
@@ -53,8 +55,10 @@ setTimeout(()=>{
                 <div class="media">
                     <img src = "${url}" />
                 </div>
-                <div class="delete action-btn">DELETE</div>
-                <div class="download action-btn">DOWNLOAD</div>
+                <div class="delete action-btn">DELETE  <span class="material-icons">
+                delete</span></div>
+                <div class="download action-btn">DOWNLOAD  <span class="material-icons">
+                file_download</span></div>
                 `;
                 let deleteBtn = mediaElem.querySelector(".delete")
                 deleteBtn.addEventListener("click",deleteListener);
